@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amy Stoddard — Design Leader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300&family=Inter:wght@400&family=Space+Mono&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ebebea;
+      --text: #030d18;
+      --text-dim: #5e6368;
+      --border: #a7a7a7;
+      --radius: 16px;
+      --gutter: 40px;
+      --gap: 24px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    .page {
+      max-width: 1728px;
+      margin: 0 auto;
+    }
+
+    /* ─── NAV / HERO ─── */
+    .nav {
+      padding: 32px var(--gutter) 72px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .nav-left {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      flex: 1 1 600px;
+    }
+
+    .nav-text {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      max-width: 670px;
+    }
+
+    .nav-headline {
+      font-size: clamp(28px, 2.78vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.083em;
+      font-weight: 400;
+    }
+
+    .nav-headline .name { color: var(--text); }
+    .nav-headline .desc { color: var(--text-dim); }
+
+    .nav-cta {
+      font-size: clamp(28px, 2.78vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.083em;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-photo {
+      width: 113px;
+      height: 113px;
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .nav-photo img {
+      width: 128%;
+      height: 128%;
+      object-fit: cover;
+      object-position: center;
+      margin-left: -14%;
+      margin-top: -6%;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      justify-content: flex-end;
+      align-self: flex-start;
+      flex: 0 0 auto;
+    }
+
+    .nav-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
+      padding-bottom: 8px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .nav-link:hover { border-bottom-color: var(--text); }
+
+    /* ─── PROJECT LIST HEADER ─── */
+    .projects-header {
+      padding: 40px var(--gutter) 0;
+    }
+
+    .projects-header-inner {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .label {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .year-heading {
+      font-size: clamp(28px, 2.78vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.083em;
+      font-weight: 400;
+    }
+
+    /* ─── SHARED PROJECT LAYOUT ─── */
+    .project {
+      padding: 0 0 80px;
+    }
+
+    .project-desc {
+      display: flex;
+      gap: var(--gap);
+      align-items: flex-start;
+      padding: 32px var(--gutter) 10px;
+      margin-bottom: var(--gap);
+    }
+
+    .project-desc.with-border {
+      border-top: 1px solid var(--border);
+    }
+
+    .project-title-col {
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+    }
+
+    .project-title {
+      font-size: clamp(24px, 2.78vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.083em;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .project-year-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      position: absolute;
+      top: 9px;
+      left: var(--year-x, 320px);
+      white-space: nowrap;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border: 1px solid currentColor;
+      border-radius: 24px;
+      padding: 0 8px;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    .project-body {
+      flex: 1 1 0;
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(20px, 1.85vw, 32px);
+      line-height: 1.2;
+      letter-spacing: -0.0625em;
+    }
+
+    .project-body u, .project-body a {
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      color: inherit;
+    }
+
+    /* ─── IMAGE UTILITIES ─── */
+    .img-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      padding: 0 var(--gutter);
+      margin-bottom: var(--gap);
+    }
+
+    .img-row.single { grid-template-columns: 1fr; }
+
+    .img-cell {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      background: #1a1a1a;
+    }
+
+    .img-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .img-cell.h610 { aspect-ratio: 812 / 610; }
+    .img-cell.h780 { aspect-ratio: 812 / 780; }
+    .img-cell.h610-full { aspect-ratio: 1648 / 610; }
+    .img-cell.h780-full { aspect-ratio: 1648 / 780; }
+
+    /* ─── GM CUSTOMIZER COMPOSITE ─── */
+    .gm-customizer-cell {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 812 / 610;
+    }
+
+    .gm-customizer-bg {
+      position: absolute;
+      inset: 0 -57% -14% -8%;
+      filter: blur(7px);
+    }
+
+    .gm-customizer-bg img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gm-customizer-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 89%);
+    }
+
+    .gm-customizer-mockup {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 82%;
+      height: 63%;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: -40px 34px 94px 0px rgba(0,0,0,0.2);
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials {
+      padding: 136px var(--gutter);
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+
+    .testimonials-label-row {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+      display: flex;
+      align-items: center;
+    }
+
+    .testimonials-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+    }
+
+    .testimonials-inner {
+      display: flex;
+      gap: var(--gap);
+      align-items: flex-start;
+    }
+
+    .testimonials-heading {
+      font-size: clamp(24px, 2.78vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.083em;
+      font-weight: 400;
+      flex: 0 0 394px;
+    }
+
+    .testimonial-col {
+      flex: 1;
+      border-left: 1px solid var(--border);
+      padding-left: var(--gutter);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .testimonial-quote {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(18px, 1.85vw, 32px);
+      line-height: 1.2;
+      letter-spacing: -0.0625em;
+    }
+
+    .testimonial-credit {
+      display: flex;
+      gap: var(--gap);
+      align-items: center;
+    }
+
+    .credit-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .credit-logo.small {
+      width: auto;
+      height: 24px;
+    }
+
+    .credit-name {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 40px;
+      padding: 0 var(--gutter);
+      justify-content: flex-end;
+      width: 100%;
+    }
+
+    .footer-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 2.4px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
+      padding-bottom: 8px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .footer-link:hover { border-bottom-color: var(--text); }
+
+    .footer-headline {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: clamp(40px, 12.54vw, 217px);
+      line-height: 1.05;
+      letter-spacing: -0.083em;
+      text-align: center;
+      width: 100%;
+      color: var(--text);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .img-row { grid-template-columns: 1fr; }
+      .testimonials-inner { flex-direction: column; }
+      .testimonials-heading { flex: none; }
+      .testimonial-col { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; }
+      .nav-links { justify-content: flex-start; }
+      .project-desc { flex-direction: column; }
+      .project-year-tag { position: static; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════════════════════════════════
+       NAV / HERO
+  ══════════════════════════════════════ -->
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-text">
+        <p class="nav-headline">
+          <span class="name">Amy Stoddard </span><span class="desc">is a design leader who designs digital products that scale — using simple patterns.</span>
+        </p>
+        <a href="mailto:aimelise@gmail.com" class="nav-cta">Let's work together.</a>
+      </div>
+      <div class="nav-photo">
+        <img src="https://www.figma.com/api/mcp/asset/3f2e5166-f00e-45f1-a6c8-f1375416bdb2" alt="Amy Stoddard">
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="https://linkedin.com/in/amystoddard" class="nav-link">LinkedIn</a>
+      <a href="#" class="nav-link">Resume</a>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       PROJECT LIST HEADER
+  ══════════════════════════════════════ -->
+  <div class="projects-header">
+    <div class="projects-header-inner">
+      <p class="label">Select Projects</p>
+      <h2 class="year-heading">2023–2026</h2>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       CAR DESIGN ACADEMY
+  ══════════════════════════════════════ -->
+  <section class="project">
+
+    <div class="project-desc">
+      <div class="project-title-col">
+        <h3 class="project-title">Car Design Academy</h3>
+        <span class="project-year-tag" style="--year-x: 430px;">2025</span>
+        <div class="tags">
+          <span class="tag">Brand</span>
+          <span class="tag">Website</span>
+          <span class="tag">Social</span>
+        </div>
+      </div>
+      <p class="project-body">
+        <u>Car Design Academy</u> trains the next generation of transportation designers. I led the brand, website, and social design — working directly with the founder to shape the academy's brand and digital presence.
+      </p>
+    </div>
+
+    <!-- Logo + Hat -->
+    <div class="img-row">
+      <div class="img-cell h610">
+        <img src="https://www.figma.com/api/mcp/asset/77de01c2-2f2f-4b51-b0c8-ee592f216cb6" alt="Car Design Academy logo">
+      </div>
+      <div class="img-cell h610">
+        <img src="https://www.figma.com/api/mcp/asset/b3a633ea-cd99-4bc5-92bb-4cd35b9b07b2" alt="Car Design Academy hat">
+      </div>
+    </div>
+
+    <!-- CDA Website -->
+    <div class="img-row single">
+      <div class="img-cell h610-full">
+        <img src="https://www.figma.com/api/mcp/asset/d8bbbda9-9759-45bf-9a37-2ded3160c594" alt="CarDesign.Academy website">
+      </div>
+    </div>
+
+    <!-- Hot Sun Corvette Concept -->
+    <div class="img-row single">
+      <div class="img-cell h610-full">
+        <img src="https://www.figma.com/api/mcp/asset/3b6ed3a2-88c0-47f1-9c0b-656ec2e67934" alt="Car Design Hot Sun Corvette Concept">
+      </div>
+    </div>
+
+    <!-- Socials + Why CDA -->
+    <div class="img-row">
+      <div class="img-cell h610">
+        <img src="https://www.figma.com/api/mcp/asset/86071ed4-ff6d-46c6-bca9-ccb2261138b2" alt="CarDesign.Academy socials">
+      </div>
+      <div class="img-cell h610">
+        <img src="https://www.figma.com/api/mcp/asset/33254a30-6bc8-4d68-b5ca-313bbaaf2f85" alt="Why Car Design Academy">
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SCOUT MOTORS
+  ══════════════════════════════════════ -->
+  <section class="project">
+
+    <div class="project-desc with-border">
+      <div class="project-title-col">
+        <h3 class="project-title">Scout Motors</h3>
+        <span class="project-year-tag" style="--year-x: 290px;">2024–2026</span>
+        <div class="tags">
+          <span class="tag">Vehicle</span>
+        </div>
+      </div>
+      <p class="project-body">
+        <u>Scout Motors</u> is reviving the historic International Harvester Scout as all-electric, rugged trucks and SUVs. I shaped the in-vehicle interaction model — including <u>Community UX</u>, a framework that turns the interface into a shared driver-passenger experience — and led design for the vehicle <u>dynamics</u> and <u>camera</u> apps core to Scout's offroad capability.
+      </p>
+    </div>
+
+    <!-- Center display full-width -->
+    <div class="img-row single">
+      <div class="img-cell h610-full">
+        <img src="https://www.figma.com/api/mcp/asset/731d2b0b-e621-4ca9-ba11-f1f189c0bc5d" alt="Scout Motors center display">
+      </div>
+    </div>
+
+    <!-- Dynamics + Connectivity apps -->
+    <div class="img-row">
+      <div class="img-cell h610">
+        <img src="https://www.figma.com/api/mcp/asset/4f87a895-9fae-4ebd-abe7-8ef9144c2281" alt="Scout Motors vehicle dynamics app">
+      </div>
+      <div class="img-cell h610">
+        <img src="https://www.figma.com/api/mcp/asset/7919f8c6-701a-4e7e-81c6-9a40c8cc736a" alt="Scout Motors connectivity manager">
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       GENERAL MOTORS
+  ══════════════════════════════════════ -->
+  <section class="project">
+
+    <div class="project-desc with-border">
+      <div class="project-title-col">
+        <h3 class="project-title">General Motors</h3>
+        <span class="project-year-tag" style="--year-x: 312px;">2023</span>
+        <div class="tags">
+          <span class="tag">Website</span>
+          <span class="tag">Strategy</span>
+          <span class="tag">Design System</span>
+        </div>
+      </div>
+      <p class="project-body">
+        General Motors, one of the world's largest automakers, relied on separate agency partners to manage each brand — resulting in fragmented UX and code. I led the <u>Aurora design system</u> to unify the experience across the organization, then applied it to redesign brand sites for Cadillac, GMC, Chevrolet, and Buick — covering the full ownership journey from <u>exploring vehicles</u> and <u>shopping</u>, to <u>onboarding</u>, <u>account management</u>, <u>support</u>, and a <u>community</u> for enthusiasts and DIYers.
+      </p>
+    </div>
+
+    <!-- Website concept full-width -->
+    <div class="img-row single">
+      <div class="img-cell h610-full" style="background: #fff;">
+        <img src="https://www.figma.com/api/mcp/asset/561a0fef-ca9b-4921-ae92-b997561aadeb" alt="General Motors website concept">
+      </div>
+    </div>
+
+    <!-- Aurora DS + customizer composite -->
+    <div class="img-row">
+      <div class="img-cell h610" style="background: #fff;">
+        <img src="https://www.figma.com/api/mcp/asset/01b9e99a-4405-4195-bd2a-d7577163baf2" alt="General Motors Aurora design system">
+      </div>
+      <div class="gm-customizer-cell">
+        <div class="gm-customizer-bg">
+          <img src="https://www.figma.com/api/mcp/asset/2acb63b0-d290-48ef-bf14-e443f85a1f4a" alt="">
+        </div>
+        <div class="gm-customizer-mockup"></div>
+      </div>
+    </div>
+
+    <!-- Purchase onboarding full-width -->
+    <div class="img-row single">
+      <div class="img-cell h610-full">
+        <img src="https://www.figma.com/api/mcp/asset/9cc3ffe9-234f-42f3-9440-1bb872e31f68" alt="General Motors purchase onboarding">
+      </div>
+    </div>
+
+    <!-- Onboarding flow + vehicle overview architecture -->
+    <div class="img-row">
+      <div class="img-cell h610" style="background: #dcdcdc;">
+        <img src="https://www.figma.com/api/mcp/asset/8fea300e-7104-488c-b16b-2321d8b89164" alt="General Motors onboarding flow">
+      </div>
+      <div class="img-cell h610" style="background: #d9d9d9;">
+        <img src="https://www.figma.com/api/mcp/asset/0cda892e-7673-42d2-9a11-7acd6dec452e" alt="General Motors vehicle overview architecture">
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       THE HAZEL HOUSE
+  ══════════════════════════════════════ -->
+  <section class="project">
+
+    <div class="project-desc with-border">
+      <div class="project-title-col">
+        <h3 class="project-title">The Hazel House</h3>
+        <span class="project-year-tag" style="--year-x: 355px;">2011–2014</span>
+        <div class="tags">
+          <span class="tag">Weekend Goals</span>
+        </div>
+      </div>
+      <p class="project-body">
+        In 2011, my husband and I took on a foreclosed home, spending three years learning the trades and applying our design skills to <u>transform it</u> from the ground up.
+      </p>
+    </div>
+
+    <!-- Exterior full-width -->
+    <div class="img-row single">
+      <div class="img-cell h780-full">
+        <img src="https://www.figma.com/api/mcp/asset/3f284dc7-aff2-4c16-84b3-9484073c35cf" alt="Hazel House exterior">
+      </div>
+    </div>
+
+    <!-- Stairs + Dining -->
+    <div class="img-row">
+      <div class="img-cell h780">
+        <img src="https://www.figma.com/api/mcp/asset/b728311a-7df8-44d3-b260-768d3b182b6e" alt="Hazel House staircase">
+      </div>
+      <div class="img-cell h780" style="background: #c5c5c5;">
+        <img src="https://www.figma.com/api/mcp/asset/bc495826-80ad-4d08-b5b2-6886faaad98c" alt="Hazel House dining room">
+      </div>
+    </div>
+
+    <!-- Kids room + Bathroom -->
+    <div class="img-row">
+      <div class="img-cell h780">
+        <img src="https://www.figma.com/api/mcp/asset/1c85665b-aeae-43ac-a407-90a31d81a0fb" alt="Hazel House kids room">
+      </div>
+      <div class="img-cell h780">
+        <img src="https://www.figma.com/api/mcp/asset/2cb34cb6-b4ef-4408-95c4-5ab152aaa99f" alt="Hazel House bathroom">
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       TESTIMONIALS
+  ══════════════════════════════════════ -->
+  <section class="testimonials">
+
+    <div class="testimonials-label-row">
+      <p class="testimonials-label">Testimonials</p>
+    </div>
+
+    <div class="testimonials-inner">
+      <h2 class="testimonials-heading">From my team</h2>
+
+      <div class="testimonial-col">
+        <blockquote class="testimonial-quote">
+          "Amy Stoddard is a talented designer and natural leader who translates complex business and technical challenges into clear, user-centered design solutions. She excels at turning experience strategy into actionable prototypes, flows, and recommendations, while effectively guiding cross-functional teams to deliver customer-first results."
+        </blockquote>
+        <div class="testimonial-credit">
+          <img class="credit-logo" src="https://www.figma.com/api/mcp/asset/65b6b4f7-f21d-4a3f-8b47-39f5cd3a298b" alt="General Motors">
+          <div class="credit-name">
+            Jillian Rogers,<br>CX Strategy
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-col">
+        <blockquote class="testimonial-quote">
+          "Amy is one of the best UX architects I have had the pleasure to work with. Her solutions are user centric, creative and innovative. The appature through which she understand a customer problem is broader which helps immensly to deliver a solution to user problem and at the same time deliver organizational imperatives."
+        </blockquote>
+        <div class="testimonial-credit">
+          <img class="credit-logo small" src="https://www.figma.com/api/mcp/asset/4c167b1a-bdda-43bf-b8dd-b54243b4b4a6" alt="BASF">
+          <div class="credit-name">
+            Maithry Taranatha,<br>Digital Product Manager
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-col">
+        <blockquote class="testimonial-quote">
+          "Amy is one of the most well-rounded designers I have worked with. Amy is smart, passionate and self-motivated. She does not back down from a challenge. In fact, the more difficult the challenge, the harder she works to break it down into something users can easily understand."
+        </blockquote>
+        <div class="testimonial-credit">
+          <img class="credit-logo" src="https://www.figma.com/api/mcp/asset/e3a681f7-c775-4b78-9e90-fe3c91930b42" alt="Matt Metropulos">
+          <div class="credit-name">
+            Matt Metropulos,<br>Design Director
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="mailto:aimelise@gmail.com" class="footer-link">Aimelise@gmail.com</a>
+      <a href="tel:2482294839" class="footer-link">248-229-4839</a>
+    </div>
+    <h2 class="footer-headline">Let's work together.</h2>
+  </footer>
+
+</div>
+</body>
+</html>
