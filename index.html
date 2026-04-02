@@ -427,98 +427,6 @@
       background: radial-gradient(ellipse at 65% 19%, #3c3c3c 0%, #232323 40%, #171717 70%, #0a0a0a 100%);
     }
 
-    .dark-blur {
-      position: absolute;
-      inset: -8% -8%;
-      filter: blur(17px);
-      transform: scale(1.1);
-    }
-
-    .dark-blur img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.7;
-    }
-
-    /* ─── CDA PHONE MOCKUP ─── */
-    .cda-phone {
-      position: absolute;
-      left: 69%;
-      top: 6.5%;
-      width: 11.6%;
-      height: 68%;
-      background: white;
-      border-radius: 8px;
-      box-shadow: -40px 34px 84px rgba(0,0,0,0.5);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cda-phone-promo {
-      background: #cc3600;
-      padding: 3% 6%;
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(5px, 0.65vw, 9px);
-      color: #e7eae9;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      flex-shrink: 0;
-      letter-spacing: -0.03em;
-    }
-
-    .cda-phone-body {
-      background: #0a0a0a;
-      flex: 1;
-      padding: 10%;
-      overflow: hidden;
-    }
-
-    .cda-phone-body img {
-      width: 100%;
-      object-fit: contain;
-    }
-
-    /* ─── GM ONBOARDING PHONE ─── */
-    .gm-onboarding-phone {
-      position: absolute;
-      left: 10%;
-      top: 7%;
-      width: 23%;
-      bottom: -40%;
-      background: black;
-      border-radius: 24px;
-      box-shadow: 0px 24px 44px 30px rgba(0,0,0,0.25);
-      overflow: hidden;
-    }
-
-    .gm-onboarding-phone img {
-      position: absolute;
-      top: 57px;
-      width: 100%;
-      object-fit: cover;
-    }
-
-    /* ─── HAZEL EXTERIOR OVERLAY ─── */
-    .hazel-ext-overlay {
-      position: absolute;
-      bottom: 32px;
-      left: 32px;
-      width: 232px;
-      height: 154px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: -40px 34px 94px rgba(0,0,0,0.2);
-    }
-
-    .hazel-ext-overlay img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
       .img-row { grid-template-columns: 1fr; }
@@ -545,7 +453,7 @@
     <div class="nav-left">
       <div class="nav-text">
         <p class="nav-headline">
-          <span class="name">Amy Stoddard </span><span class="desc">is a design leader who builds systems at scale — keeping patterns simple, replicable.</span>
+          <span class="name">Amy Stoddard </span><span class="desc">is a design leader who scales digital products through the power of pattern.</span>
         </p>
         <a href="mailto:aimelise@gmail.com" class="nav-cta">Let's work together.</a>
       </div>
@@ -592,7 +500,7 @@
     <!-- Logo + Hat -->
     <div class="img-row">
       <div class="img-cell h610">
-        <img src="images/cda-logo.png" alt="Car Design Academy logo">
+        <img src="images/cda-logo.jpg" alt="Car Design Academy logo">
       </div>
       <div class="img-cell h610">
         <img src="images/cda-hat.jpg" alt="Car Design Academy hat">
@@ -601,13 +509,8 @@
 
     <!-- CDA Website -->
     <div class="img-row single">
-      <div class="img-cell h610-full dark-composite">
-        <div class="cda-phone">
-          <div class="cda-phone-promo">Our Gravity Sketch 6-Week Intensive starts January 15, 2025. Get details.</div>
-          <div class="cda-phone-body">
-            <img src="images/cda-phone-logo.png" alt="Car Design Academy">
-          </div>
-        </div>
+      <div class="img-cell h610-full">
+        <img src="images/cda-website.jpg" alt="Car Design Academy website">
       </div>
     </div>
 
@@ -620,11 +523,11 @@
 
     <!-- Socials + Why CDA -->
     <div class="img-row">
-      <div class="img-cell h610 dark-composite">
-        <img src="images/cda-socials.png" alt="CarDesign.Academy socials" style="position:absolute;left:50%;top:-91px;transform:translateX(-50%);width:auto;height:auto;object-fit:none;">
+      <div class="img-cell h610">
+        <img src="images/cda-socials.jpg" alt="CarDesign.Academy socials">
       </div>
-      <div class="img-cell h610 dark-composite">
-        <img src="images/cda-why.jpg" alt="Why Car Design Academy" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:135%;height:100%;object-fit:cover;">
+      <div class="img-cell h610">
+        <img src="images/cda-why.jpg" alt="Why Car Design Academy">
       </div>
     </div>
 
@@ -650,20 +553,18 @@
 
     <!-- Center display full-width -->
     <div class="img-row single">
-      <div class="img-cell h610-full dark-composite"></div>
+      <div class="img-cell h610-full dark-composite">
+        <img src="images/scout-center-display.jpg" alt="Scout Motors center display">
+      </div>
     </div>
 
     <!-- Dynamics + Connectivity apps -->
     <div class="img-row">
       <div class="img-cell h610 dark-composite">
-        <div class="dark-blur">
-          <img src="images/scout-dynamics-bg.jpg" alt="">
-        </div>
+        <img src="images/scout-dynamics-bg.jpg" alt="Scout Motors dynamics app">
       </div>
-      <div class="img-cell h610 dark-composite">
-        <div class="dark-blur">
-          <img src="images/scout-connectivity-bg.jpg" alt="">
-        </div>
+      <div class="img-cell h610">
+        <img src="images/scout-connectivity-bg.jpg" alt="Scout Motors connectivity manager">
       </div>
     </div>
 
@@ -711,17 +612,19 @@
 
     <!-- Purchase onboarding full-width -->
     <div class="img-row single">
-      <div class="img-cell h610-full dark-composite">
-        <div class="gm-onboarding-phone">
-          <img src="images/gm-cadillac.jpg" alt="Cadillac LYRIQ">
-        </div>
+      <div class="img-cell h610-full">
+        <img src="images/gm-purchase-onboarding.jpg" alt="General Motors purchase onboarding">
       </div>
     </div>
 
     <!-- Onboarding flow + vehicle overview architecture -->
     <div class="img-row">
-      <div class="img-cell h610" style="background: #dcdcdc;"></div>
-      <div class="img-cell h610" style="background: #d9d9d9;"></div>
+      <div class="img-cell h610" style="background: #dcdcdc;">
+        <img src="images/gm-flow.jpg" alt="General Motors onboarding flow">
+      </div>
+      <div class="img-cell h610" style="background: #d9d9d9;">
+        <img src="images/gm-architecture.jpg" alt="General Motors vehicle overview architecture">
+      </div>
     </div>
 
   </section>
@@ -748,9 +651,6 @@
     <div class="img-row single">
       <div class="img-cell h780-full">
         <img src="images/hazel-exterior.jpg" alt="Hazel House exterior">
-        <div class="hazel-ext-overlay">
-          <img src="images/hazel-exterior-overlay.jpg" alt="">
-        </div>
       </div>
     </div>
 
